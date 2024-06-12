@@ -1,0 +1,7 @@
+{
+    "project_name": "Golang template",
+    "github_org": "Github organisation",
+    "project_slug": "go-template",
+    "project_usage": "Implement golang template",
+    "env_prefix": "{{ cookiecutter.project_slug.upper().replace('-', '_') }}"
+}
