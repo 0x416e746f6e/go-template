@@ -2,34 +2,27 @@ package main
 
 import (
 	"slices"
+	"strings"
+
+	"github.com/urfave/cli/v2"
 
 	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/config"
 	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/server"
-	"github.com/urfave/cli/v2"
 )
 
 const (
-	categoryServer = "SERVER:"
+	categoryServer = "server"
 )
 
 func CommandServe(cfg *config.Config) *cli.Command {
 	serverFlags := []cli.Flag{
 		&cli.StringFlag{
-			Category:    categoryServer,
+			Category:    strings.ToUpper(categoryServer),
 			Destination: &cfg.Server.ListenAddress,
-			EnvVars:     []string{envPrefix + "LISTEN_ADDRESS"},
-			Name:        "listen-address",
+			EnvVars:     []string{envPrefix + strings.ToUpper(categoryServer) + "_LISTEN_ADDRESS"},
+			Name:        categoryServer + "-listen-address",
 			Usage:       "`host:port` for the server to listen on",
 			Value:       "0.0.0.0:8080",
-		},
-
-		&cli.StringFlag{
-			Category:    categoryServer,
-			Destination: &cfg.Server.Name,
-			EnvVars:     []string{envPrefix + "SERVER_NAME"},
-			Name:        "server-name",
-			Usage:       "service `name` to report in prometheus metrics",
-			Value:       "{{ cookiecutter.project_slug }}",
 		},
 	}
 

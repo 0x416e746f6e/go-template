@@ -15,3 +15,7 @@ snapshot:
 .PHONY: help
 help:
 	@go run github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/cmd serve --help
+
+.PHONY: serve
+serve:
+	@go run github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/cmd serve

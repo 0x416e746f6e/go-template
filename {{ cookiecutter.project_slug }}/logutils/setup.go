@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/config"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+
+	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/config"
 )
 
 var (
@@ -23,6 +24,7 @@ func NewLogger(cfg *config.Log) (
 	switch strings.ToLower(cfg.Mode) {
 	case "dev":
 		config = zap.NewDevelopmentConfig()
+		config.EncoderConfig.EncodeCaller = nil
 	case "prod":
 		config = zap.NewProductionConfig()
 	default:

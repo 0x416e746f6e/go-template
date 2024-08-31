@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/config"
-	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/logutils"
 	"github.com/urfave/cli/v2"
 	"go.uber.org/zap"
+
+	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/config"
+	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/logutils"
 )
 
 var (
@@ -41,6 +42,7 @@ func main() {
 
 	commands := []*cli.Command{
 		CommandServe(cfg),
+		CommandHelp(cfg),
 	}
 
 	app := &cli.App{

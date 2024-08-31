@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/logutils"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
+
+	"github.com/{{ cookiecutter.github_org }}/{{ cookiecutter.project_slug }}/logutils"
 )
 
 func Middleware(logger *zap.Logger, next http.Handler) http.Handler {
